@@ -51,6 +51,25 @@
           <h1 class="h2">Certificates</h1>
         </div>
 
+        <div class="flex-grow-1 w-100">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- ko foreach: certificates -->
+              <tr>
+                <td><span data-bind="name"></span></td>
+                <td>&nbsp;</td>
+              </tr>
+              <!-- /ko -->
+            </tbody>
+          </table>
+        </div>
+  
       </main>
     </div>
   </div>
