@@ -51,6 +51,34 @@
           <h1 class="h2">Create New</h1>
         </div>
 
+        <!-- TODO : Send through viewmodel to back end -->
+        <form>
+          <!-- TODO : Step 1- Create Private Key -->
+          <!-- TODO : Step 2- Create CSR -->
+          <!-- TODO : Step 3- Sign with parent certificate  -->
+
+          <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" class="form-control" id="subject" aria-describedby="subjectHelp">
+            <div id="subjectHelp" class="form-text">Subject name (SN). This is typically a domain name.</div>
+          </div>
+          <div class="mb-3">
+            <label for="root" class="form-label">Signing certificate</label>
+            <select class="form-select" id="root" aria-describedby="rootHelp">
+              <option selected>Pick a parent certificate</option>
+              <option value="root">None (Top level certificate)</option>
+              <!-- TODO : Populate root certificates -->
+            </select>
+            <div id="rootHelp" class="form-text">Pick the parent signing certificate.</div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" aria-describedby="passwordHelp">
+            <div id="passwordHelp" class="form-text">Password for private key.</div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
       </main>
     </div>
   </div>
