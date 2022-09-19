@@ -58,9 +58,53 @@
           <!-- TODO : Step 3- Sign with parent certificate  -->
 
           <div class="mb-3">
-            <label for="subject" class="form-label">Subject</label>
-            <input type="text" class="form-control" id="subject" aria-describedby="subjectHelp">
-            <div id="subjectHelp" class="form-text">Subject name (SN). This is typically a domain name.</div>
+            <label for="name" class="form-label">Common Name</label>
+            <input type="text" class="form-control" id="name" aria-describedby="nameHelp">
+            <div id="nameHelp" class="form-text">Common name (CN). This is typically a domain name.</div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Contact E-mail</label>
+            <input type="text" class="form-control" id="email" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">Contact e-mail address (E).</div>
+          </div>
+          <div class="mb-3">
+            <label for="orgunit" class="form-label">Organisation Unit</label>
+            <input type="text" class="form-control" id="orgunit" aria-describedby="orgunitHelp">
+            <div id="orgunitHelp" class="form-text">Organisation Unit (OU). Typically the department.</div>
+          </div>
+          <div class="mb-3">
+            <label for="org" class="form-label">Organisation</label>
+            <input type="text" class="form-control" id="org" aria-describedby="orgHelp">
+            <div id="orgHelp" class="form-text">Organisation (O). Typically the company name.</div>
+          </div>
+          <div class="mb-3">
+            <label for="city" class="form-label">City</label>
+            <input type="text" class="form-control" id="city" aria-describedby="cityHelp">
+            <div id="cityHelp" class="form-text">City (L).</div>
+          </div>
+          <div class="mb-3">
+            <label for="state" class="form-label">State</label>
+            <input type="text" class="form-control" id="state" aria-describedby="stateHelp">
+            <div id="stateHelp" class="form-text">State (S).</div>
+          </div>
+          <div class="mb-3">
+            <label for="country" class="form-label">Country</label>
+            <input type="text" class="form-control" id="country" aria-describedby="countryHelp">
+            <div id="countryHelp" class="form-text">Country (C).</div>
+          </div>
+          <div class="mb-3">
+            <label for="expires" class="form-label">Expires</label>
+            <input type="text" class="form-control" id="expires" aria-describedby="expiresHelp">
+            <div id="expiresHelp" class="form-text">Format yyyy-mm-dd.</div>
+          </div>
+          <div class="mb-3">
+            <label for="keysize" class="form-label">Key size</label>
+            <select class="form-select" id="keysize" aria-describedby="keysizeHelp">
+              <option value="4096" selected>4096 bits</option>
+              <option value="2048">2048 bits</option>
+              <option value="1024">1024 bits</option>
+            </select>
+            <div id="rootHelp" class="form-text">Pick the parent signing certificate.</div>
           </div>
           <div class="mb-3">
             <label for="root" class="form-label">Signing certificate</label>
@@ -72,9 +116,9 @@
             <div id="rootHelp" class="form-text">Pick the parent signing certificate.</div>
           </div>
           <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" aria-describedby="passwordHelp">
-            <div id="passwordHelp" class="form-text">Password for private key.</div>
+            <label for="passphrase" class="form-label">Passphrase</label>
+            <input type="password" class="form-control" id="passphrase" aria-describedby="passphraseHelp">
+            <div id="passphraseHelp" class="form-text">Passphrase for private key.</div>
           </div>
 
           <button type="submit" class="btn btn-primary">Submit</button>
