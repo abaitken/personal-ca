@@ -3,8 +3,8 @@ require_once('CertificateCollection.php');
 
 abstract class CollectionData
 {
-    abstract public function GetItemDetails(string $id): ?array;
-    abstract public function GetItems(): array;
+    abstract public function GetItemDetails(string $id, $queryParameters = array()): ?array;
+    abstract public function GetItems($queryParameters = array()): Generator;
 
     static public function CreateDataSource(string $collection): ?CollectionData
     {

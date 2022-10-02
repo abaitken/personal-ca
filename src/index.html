@@ -52,6 +52,20 @@
         </div>
 
         <div class="flex-grow-1 w-100">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-custom">
+              <!-- ko foreach: breadcrumb -->
+              <!-- ko ifnot: ($index() === ($parent.breadcrumb().length - 1)) -->
+              <li class="breadcrumb-item"><a href="#" data-bind="text: name; click: $parent.jumpToContainer"></a></li>
+              <!-- /ko -->
+              <!-- ko if: ($index() === ($parent.breadcrumb().length - 1)) -->
+              <li class="breadcrumb-item active" aria-current="page" data-bind="text: name"></li>
+              <!-- /ko -->
+              <!-- /ko -->
+            </ol>
+          </nav>
+        </div>
+        <div class="flex-grow-1 w-100">
           <table class="table">
             <thead>
               <tr>
@@ -62,14 +76,20 @@
             <tbody>
               <!-- ko foreach: certificates -->
               <tr>
-                <td><span data-bind="name"></span></td>
-                <td>&nbsp;</td>
+                <td><span data-bind="text: name"></span></td>
+                <td>
+                  <!-- ko if: $data.container -->
+                  <button data-bind="click: $parent.openChildContainer"><span data-feather="book-open"></span></button>
+                  <!-- /ko -->
+                  <button><span data-feather="delete"></span></button>
+                  <button><span data-feather="refresh-cw"></span></button>
+                </td>
               </tr>
               <!-- /ko -->
             </tbody>
           </table>
         </div>
-  
+
       </main>
     </div>
   </div>

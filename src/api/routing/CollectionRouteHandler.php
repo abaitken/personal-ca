@@ -10,14 +10,14 @@ class CollectionRouteHandler extends RouteHandler
         $this->_collection = $collection;
     }
 
-    public function Process(): void
+    public function Process($queryParameters = array()): void
     {
         $collectionData = self::GetCollectionData($this->_collection);
 
         if(is_null($collectionData))
             self::ErrorNotFound();
         
-        $items = $collectionData->GetItems();
+        $items = iterator_to_array($collectionData->GetItems($queryParameters), false);
 
         self::BeginOutput();
         echo json_encode($items);

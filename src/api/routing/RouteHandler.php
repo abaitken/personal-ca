@@ -39,7 +39,7 @@ abstract class RouteHandler
         return $collectionData;
     }
 
-    abstract public function Process(): void;
+    abstract public function Process($queryParameters = array()): void;
     
     static private function GetRouteParts(): array
     {
@@ -73,20 +73,24 @@ abstract class RouteHandler
 
         if($method == 'GET')
         {
+            // -> /{COLLECTION}
             if(count($routeParts) == 1)
                 return new CollectionRouteHandler($routeParts[0]);
+            // -> /{COLLECTION}/{ID}
             if(count($routeParts) == 2)
                 return new CollectionItemRouteHandler($routeParts[0], $routeParts[1]);
         }
 
         if($method == 'POST')
         {
+            // -> /{COLLECTION}
             if(count($routeParts) == 1)
                 return new CollectionRouteHandler($routeParts[0]);
         }
 
         if($method == 'PUT')
         {
+            // -> /{COLLECTION}/{ID}
             if(count($routeParts) == 2)
                 return new CollectionItemRouteHandler($routeParts[0], $routeParts[1]);
         }

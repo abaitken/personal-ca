@@ -11,7 +11,7 @@ class CollectionItemRouteHandler extends RouteHandler
         $this->_item = $item;
     }
 
-    public function Process(): void
+    public function Process($queryParameters = array()): void
     {
         $collectionData = self::GetCollectionData($this->_collection);
 

@@ -1,30 +1,14 @@
-function CreateDataSource()
-{
-
-    if (location.href.startsWith('file'))
-        return new TestDataSource();
-
-    return new DataSource();
-}
-
-function TestDataSource()
-{
-    let self = this;
-    self.fetchCertificates = function(){
-        return new Promise((resolve, reject) => {
-            resolve([]);
-        });
-    };
-}
-
 function DataSource()
 {
     let self = this;
-    self.fetchCertificates = function() {
+    self.fetchCertificates = function(parent) {
         return new Promise((resolve, reject) => {
+            selectRoot = (parent == null || parent === undefined || parent === '0');
+            args = selectRoot ? '' : '?container=' + parent;
+
             $.ajax({
                 type: 'GET',
-                url: '/api/Certificates',
+                url: 'api/Certificates' + args,
                 dataType: 'json',
                 mimeType: 'application/json',
                 success: function (data) {
