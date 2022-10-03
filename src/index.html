@@ -52,17 +52,15 @@
         </div>
 
         <div class="flex-grow-1 w-100">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb breadcrumb-custom">
+          <nav class="breadcrumbs">
               <!-- ko foreach: breadcrumb -->
               <!-- ko ifnot: ($index() === ($parent.breadcrumb().length - 1)) -->
-              <li class="breadcrumb-item"><a href="#" data-bind="text: name; click: $parent.jumpToContainer"></a></li>
+              <a class="breadcrumb-item" data-bind="text: name, click: $parent.jumpToContainer"></a>
               <!-- /ko -->
               <!-- ko if: ($index() === ($parent.breadcrumb().length - 1)) -->
-              <li class="breadcrumb-item active" aria-current="page" data-bind="text: name"></li>
+              <a class="breadcrumb-item is-active" data-bind="text: name"></a>
               <!-- /ko -->
               <!-- /ko -->
-            </ol>
           </nav>
         </div>
         <div class="flex-grow-1 w-100">

@@ -14,8 +14,15 @@ function ViewModel() {
     };
 
     self.jumpToContainer = function(item) {
-        console.log('jumpToContainer');
-        console.log(item);
+        let itemIndex = self.breadcrumb().indexOf(item);
+        let newBreadCrumb = [];
+
+        for (let index = 0; index < itemIndex; index++) {
+            const element = self.breadcrumb()[index];
+            newBreadCrumb.push(element);
+        }
+        self.breadcrumb(newBreadCrumb);
+        self.openChildContainer(item);
     };
 
     self.Init = function () {
