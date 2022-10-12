@@ -1,11 +1,12 @@
 <?php
 require_once('RouteHandler.php');
+require_once('controllers/NoRouteController.php');
+
 class NoRouteHandler extends RouteHandler
 {
-    public function Process($queryParameters = array()): void
+    public function Process($queryParameters = array(), $routeParts = array()): void
     {
-        self::BeginOutput();
-        // TODO : Return list of resources?
-        self::ErrorBadRequest();
+        $controller = new NoRouteController();
+        $controller->Process($queryParameters, $routeParts);
     }
 }

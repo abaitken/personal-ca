@@ -11,5 +11,6 @@ require_once('routing/RouteHandler.php');
 $queryString = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
 parse_str($queryString, $queryParameters);
 
-$routeHandler = RouteHandler::CreateHandler();
-$routeHandler->Process($queryParameters);
+$routeParts = GetRouteParts();
+$routeHandler = RouteHandler::CreateHandler($routeParts);
+$routeHandler->Process($queryParameters, $routeParts);
