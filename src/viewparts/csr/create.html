@@ -1,4 +1,5 @@
 {% set TITLE = 'Create New' %}
+{% set PAGE_ID = 'csr_create' %}
 {% extends "viewparts/master.html" %}
 {% block content %}
 <!-- TODO : Send through viewmodel to back end -->
@@ -54,16 +55,7 @@
       <option value="2048">2048 bits</option>
       <option value="1024">1024 bits</option>
     </select>
-    <div id="rootHelp" class="form-text">Pick the parent signing certificate.</div>
-  </div>
-  <div class="mb-3">
-    <label for="root" class="form-label">Signing certificate</label>
-    <select class="form-select" id="root" aria-describedby="rootHelp">
-      <option selected>Pick a parent certificate</option>
-      <option value="root">None (Top level certificate)</option>
-      <!-- TODO : Populate root certificates -->
-    </select>
-    <div id="rootHelp" class="form-text">Pick the parent signing certificate.</div>
+    <div id="keysizeHelp" class="form-text">Pick key size.</div>
   </div>
   <div class="mb-3">
     <label for="passphrase" class="form-label">Passphrase</label>
@@ -75,6 +67,6 @@
 </form>
 {% endblock %}
 {% block scripts %}
-<script src="js/common.js" type="text/javascript"></script>
-<script src="js/viewmodel-new.js" type="text/javascript"></script>
+<script src="{{APPROOT}}/js/common.js" type="text/javascript"></script>
+<script src="{{APPROOT}}/js/viewmodel-new.js" type="text/javascript"></script>
 {% endblock %}

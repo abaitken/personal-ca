@@ -23,13 +23,38 @@ function GetRouteParts(): array
 
 function RouteToTemplate($routeParts)
 {
-    if(count($routeParts) == 0)
-    {
-        return 'index';
+    if (count($routeParts) == 0)
+        return 'viewparts/index.html';
+
+    if (count($routeParts) == 1) {
+        switch (strtolower($routeParts[0])) {
+            case 'index':
+                return 'viewparts/index.html';
+            default:
+                return 'viewparts/unknownroute.html';
+        }
     }
-    
-    // TODO : Switch case here
-    return strtolower($routeParts[0]);
+
+    if (count($routeParts) == 2) {
+        switch (strtolower($routeParts[0])) {
+            case 'csr': {
+                    switch (strtolower($routeParts[1])) {
+                        case 'create':
+                            return 'viewparts/csr/create.html';
+                        case 'import':
+                            return 'viewparts/csr/import.html';
+                        case 'upload':
+                            return 'viewparts/csr/upload.html';
+                        default:
+                            return 'viewparts/unknownroute.html';
+                    }
+                }
+            default:
+                return 'viewparts/unknownroute.html';
+        }
+    }
+
+    return 'viewparts/unknownroute.html';
 }
 
 $urlParts = parse_url($_SERVER['REQUEST_URI']);
@@ -40,13 +65,9 @@ $routeParts = GetRouteParts();
 $loader = new \Twig\Loader\FilesystemLoader('./');
 $twig = new \Twig\Environment($loader);
 
-$filename = RouteToTemplate($routeParts);
-
 $scriptName = $_SERVER['SCRIPT_NAME'];
 $appPath = substr($scriptName, 0, strrpos($scriptName, '/'));
 
-echo $twig->render('viewparts/' . $filename . '.html', [
-    'activePage' => $filename,
+echo $twig->render(RouteToTemplate($routeParts), [
     'APPROOT' => $appPath
 ]);
-
