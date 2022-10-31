@@ -1,0 +1,45 @@
+{% set TITLE = 'Certificates' %}
+{% extends "viewparts/master.html" %}
+{% block content %}
+<div class="flex-grow-1 w-100">
+  <nav class="breadcrumbs">
+      <!-- ko foreach: breadcrumb -->
+      <!-- ko ifnot: ($index() === ($parent.breadcrumb().length - 1)) -->
+      <a class="breadcrumb-item" data-bind="text: name, click: $parent.jumpToContainer"></a>
+      <!-- /ko -->
+      <!-- ko if: ($index() === ($parent.breadcrumb().length - 1)) -->
+      <a class="breadcrumb-item is-active" data-bind="text: name"></a>
+      <!-- /ko -->
+      <!-- /ko -->
+  </nav>
+</div>
+<div class="flex-grow-1 w-100">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- ko foreach: certificates -->
+      <tr>
+        <td><span data-bind="text: name"></span></td>
+        <td>
+          <!-- ko if: $data.container -->
+          <button data-bind="click: $parent.openChildContainer"><span data-feather="book-open"></span></button>
+          <!-- /ko -->
+          <button><span data-feather="delete"></span></button>
+          <button><span data-feather="refresh-cw"></span></button>
+        </td>
+      </tr>
+      <!-- /ko -->
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="js/common.js" type="text/javascript"></script>
+<script src="js/data-source.js" type="text/javascript"></script>
+<script src="js/viewmodel-index.js" type="text/javascript"></script>
+{% endblock %}
