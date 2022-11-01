@@ -49,6 +49,16 @@ function RouteToTemplate($routeParts)
                             return 'viewparts/unknownroute.html';
                     }
                 }
+            case 'cert': {
+                    switch (strtolower($routeParts[1])) {
+                        case 'import':
+                            return 'viewparts/cert/import.html';
+                        case 'upload':
+                            return 'viewparts/cert/upload.html';
+                        default:
+                            return 'viewparts/unknownroute.html';
+                    }
+                }
             default:
                 return 'viewparts/unknownroute.html';
         }
