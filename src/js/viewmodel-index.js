@@ -10,8 +10,19 @@ function ViewModel() {
         self._data.fetchCertificates(item['id'])
             .then((data) => {
                 self.certificates(data);
+            }).catch((error) => {
+                self.pageError(error);
             });
     };
+
+    self.pageError = ko.observable(null);
+    self.errorText = ko.pureComputed(function(){
+        let error = self.pageError();
+        if(error === null)
+            return null;
+
+        return error.data.status + ": " + error.data.title + ", " + error.data.detail;
+    });
 
     self.jumpToContainer = function(item) {
         let itemIndex = self.breadcrumb().indexOf(item);
@@ -34,6 +45,8 @@ function ViewModel() {
         self._data.fetchCertificates(self.breadcrumb()[0]['id'])
             .then((data) => {
                 self.certificates(data);
+            }).catch((error) => {
+                self.pageError(error);
             });
     };
 }

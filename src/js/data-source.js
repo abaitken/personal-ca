@@ -15,7 +15,11 @@ function DataSource()
                     resolve(data);
                 },
                 error: function (error) {
-                    reject(error);
+                    reject({
+                        e: error,
+                        status:error.status,
+                        data: error.responseJSON
+                    });
                 }
             });
         });

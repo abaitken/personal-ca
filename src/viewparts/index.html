@@ -2,6 +2,11 @@
 {% set PAGE_ID = 'index' %}
 {% extends "viewparts/master.html" %}
 {% block content %}
+<!-- ko ifnot: errorText() == null -->
+<div class="alert alert-danger" role="alert" data-bind="text: errorText">
+</div>
+<!-- /ko -->
+
 <div class="flex-grow-1 w-100">
   <nav class="breadcrumbs">
       <!-- ko foreach: breadcrumb -->
