@@ -2,7 +2,14 @@
 {% set PAGE_ID = 'csr_import' %}
 {% extends "viewparts/master.html" %}
 {% block content %}
-TODO : Implement this
+<form>
+  <div class="mb-3">
+    <label for="request" class="form-label">CSR Request</label>
+    <textarea id="request" class="form-control" cols="60" rows="10"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 {% endblock %}
 {% block scripts %}
 <script src="{{APPROOT}}/js/common.js" type="text/javascript"></script>
